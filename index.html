@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Dan Ahrendt | Audio Engineer</title>
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dan Ahrendt | Audio Engineer</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
     <link rel="manifest" href="/assets/img/site.webmanifest">
@@ -16,111 +17,213 @@
     <meta name="msapplication-config" content="/assets/img/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
 
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-        
-
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
 
 
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-    </head>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+
+    <!-- WaveSurf -->
+    <!-- <title>WaveSurf Plugin Example</title> -->
+
+
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js"
+        integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+    <script src="https://unpkg.com/wavesurfer.js/dist/plugin/wavesurfer.cursor.js"></script>
+
+
+    <script>
+        var wavesurfer;
+        function setVolume(v) {
+            var newVolume = $('#myRange').val();
+            var i = parseInt(newVolume, 10);
+            var j = (i / 100).toFixed(2);
+            console.log('slider changed', newVolume, i, j);
+            wavesurfer.setVolume(j);
+            $('#volume').html(newVolume);
+        }
+        $().ready(() => {
+            wavesurfer = WaveSurfer.create({
+                container: '#eal',
+                barWidth: 2,
+                barHeight: 0.9,
+                barGap: 3,
+                waveColor: 'grey',
+                progressColor: '#8F1C1D',
+                progressBar: 'white',
+                plugins: [
+                    WaveSurfer.cursor.create({
+                        showTime: false,
+                        color: 'white',
+                        opacity: 1,
+                        customShowTimeStyle: {
+                            'background-color': '#000',
+                            color: '#fff',
+                            padding: '2px',
+                            fontSize: '10px'
+                        }
+                    })
+                ]
+
+            });
+
+            wavesurfer.load('8. Waste Your Time Mix2.mp3');
+            $('#play').on('click', () => { wavesurfer.play(); });
+            $('#pause').on('click', () => { wavesurfer.pause(); });
+            //$('#volume').html(wavesurfer.getVolume());
+            $('#myRange').on('change', (e) => { setVolume() });
+            setVolume()
+        });
+    </script>
+    
 
 
 
-    <body id="page-top">
-        <!-- Navigation----------------------------------------------------------------------->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span class="d-block d-lg-none">Dan Ahrendt</span>
-                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/IMG_6365.jpg" alt="..." /></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+</head>
 
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Listen</a></li>
-                    
-                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li> -->
-                    
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    
-                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+
+
+<body id="page-top">
+    <!-- Navigation----------------------------------------------------------------------->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Dan Ahrendt</span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
+                    src="assets/img/newDanProfilePic.jpg" alt="..." /></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#portfolio">Listen</a></li>
+
+                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li> -->
+
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+
+                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li> -->
-                    
-                </ul>
-            </div>
-        </nav>
+
+            </ul>
+        </div>
+    </nav>
 
 
 
-        <!-- Page Content----------------------------------------------------------------------->
-        <div class="container-fluid p-0">
+    <!-- Page Content----------------------------------------------------------------------->
+    <div class="container-fluid p-0">
 
-            <!-- About----------------------------------------------------------------------->
-            <section class="resume-section" id="about">
-                <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        Dan
-                        <span class="text-primary">Ahrendt</span>
-                    </h1>
-                    <h3>
-                        Audio Engineer | Musician | Producer
-                    </h3>
-                    <div class="subheading mb-5">
-                        Bloomington, IN <span class='px-2'>|</span>
-                        <a href="mailto:dan@danahrendt.com">dan@danahrendt.com</a>
-                    </div>
-                    <p class="lead mb-4">Dan Ahrendt is a musician, audio engineer, and producer. He started his musical journey at a young age by playing guitar in local rock bands and participating in school ensembles. Since 2020,  he has been the lead guitarist in the band Mindfully Blind, where he showcases his guitar playing, producing, and audio engineering skills.</p>
-
-                    <p class="lead mb-4">With a strong background in both digital and analogue audio recording and mixing techniques, Dan is highly skilled in using the latest software and hardware to create high-quality recordings and mixes. He is also knowledgeable about the acoustics of recording studios and how to utilize the space to create the ideal recording.</p>
-                        
-                    <p class="lead mb-5">Whether working on a complex multi-track recording or a simple live performance, Dan brings his passion for sound to every project. He is a dedicated, detail-oriented audio engineer, and always striving to achieve the best possible results for his clients. With his commitment to quality and his passion for music, Dan Ahrendt is a valuable asset to any musical project.</p>
-                    <div class="social-icons">
-                        
-                        <a class="social-icon" href="https://www.linkedin.com/in/danahrendt/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="https://mindfullyblind.wixsite.com/band" target="_blank"><i class="fas fa-guitar"></i></a>
-                    </div>
+        <!-- About----------------------------------------------------------------------->
+        <section class="resume-section" id="about">
+            <div class="resume-section-content">
+                <h1 class="mb-0">
+                    Dan
+                    <span class="text-primary">Ahrendt</span>
+                </h1>
+                <h3>
+                    Audio Engineer | Musician | Producer
+                </h3>
+                <div class="subheading mb-5">
+                    Bloomington, IN <span class='px-2'>|</span>
+                    <a href="mailto:dan@danahrendt.com">dan@danahrendt.com</a>
                 </div>
-            </section>
-           <hr class="m-0" />
-           
-           <!-- Portfolio----------------------------------------------------------------------->
-           <section class="resume-section" id="portfolio">
-            
+                <p class="lead mb-4">Dan Ahrendt is a musician, audio engineer, and producer. He started his musical
+                    journey at a young age by playing guitar in local rock bands and participating in school ensembles.
+                    Since 2020, he has been the lead guitarist in the band Mindfully Blind, where he showcases his
+                    guitar playing, producing, and audio engineering skills.</p>
+
+                <p class="lead mb-4">With a strong background in both digital and analogue audio recording and mixing
+                    techniques, Dan is highly skilled in using the latest software and hardware to create high-quality
+                    recordings and mixes. He is also knowledgeable about the acoustics of recording studios and how to
+                    utilize the space to create the ideal recording.</p>
+
+                <p class="lead mb-5">Whether working on a complex multi-track recording or a simple live performance,
+                    Dan brings his passion for sound to every project. He is a dedicated, detail-oriented audio
+                    engineer, and always striving to achieve the best possible results for his clients. With his
+                    commitment to quality and his passion for music, Dan Ahrendt is a valuable asset to any musical
+                    project.</p>
+                <div class="social-icons">
+
+                    <a class="social-icon" href="https://www.linkedin.com/in/danahrendt/" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a class="social-icon" href="https://mindfullyblind.wixsite.com/band" target="_blank"><i
+                            class="fas fa-guitar"></i></a>
+                </div>
+            </div>
+        </section>
+        <hr class="m-0" />
+
+        <!-- Portfolio----------------------------------------------------------------------->
+        <section class="resume-section" id="portfolio">
+
             <div class="resume-section-content">
                 <h2 class="mb-5">Listen</h2>
-                
+
                 <!-- <ul class="fa-ul mb-0"> -->
                 <!--    <li> Portfolio Template
                         <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
                         Google Analytics Certified Developer
-                    </li> --> 
-                    <div class="flex-container">
-                        <div style="flex-grow: 4; height: min-content;">
-                            <h3>Audio Samples</h3>
-                            
-                        </div>
-                        <div style="flex-grow: 4; height: min-content; ">
+                    </li> -->
+                <div class="flex-container">
+                    <div style="flex-grow: 4; height: min-content;">
+                        <h3>My Mixes</h3>
+                        Been Here Before
+                        <br />
+                        <div id="eal"></div>
+                        <br />
+                        <button id="play"><i class="fa-solid fa-play" style="color: #ffffff;"></i></button>
+
+                        <button id="pause"><i class="fa-solid fa-pause" style="color: #ffffff;"></i></button>
+                        <br />
+                        <!-- Volume: <span id="volume"></span>
+                        <div class="slidecontainer" style="width: 30%; height: ">
+                            <input type="range" min="1" max="100" value="100" class="slider" id="myRange">
+                        </div> -->
+                    </div>
+                    <!-- <div style="flex-grow: 4; height: min-content; ">
                             <h3>Guitar Work</h3>
                             <p>Spotify:</p>
                             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6JomyCkbjLn0PDQMn0ZJCN?utm_source=generator" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
                             </iframe>
-                        </div>
-                        <!-- ADD divs here with more portfolio stuff -->
-                    </div>
-                        
+                        </div> -->
+                    <!-- ADD divs here with more portfolio stuff -->
+                 
+
+
+                    <!-- <div style="flex-grow: 4; height: min-content; ">
+                            <h3>Guitar Work</h3>
+                            <p>Spotify:</p>
+                            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/6JomyCkbjLn0PDQMn0ZJCN?utm_source=generator" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+                            </iframe>
+                        </div> -->
+                    <!-- ADD divs here with more portfolio stuff -->
+                </div>
+
                 <!-- </ul> -->
             </div>
+
+            <!-- <div class="container d-flex justify-content-center my-4 mb-5"> -->
+
+
         </section>
-           
-           
-           <!-- Experience--------------------------------------------------------------------
+
+
+        <!-- Experience--------------------------------------------------------------------
             <section class="resume-section" id="experience">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Experience</h2>
@@ -165,35 +268,35 @@
 
 
 
-            <!-- Education----------------------------------------------------------------------->
-            <section class="resume-section" id="education">
-                <div class="resume-section-content">
-                    <h2 class="mb-5">Education</h2>
-                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="flex-grow-1">
-                            <h3 class="mt-xxl-5">Indiana University, Jacobs School of Music – Bloomington, Indiana</h3>
-                          
-                            <h3 class="mt-xxl-5">Bachelor of Science</h3>
-                            <h4 class="subheading mb-3">Audio Engineering and Sound Production</h4>
+        <!-- Education----------------------------------------------------------------------->
+        <section class="resume-section" id="education">
+            <div class="resume-section-content">
+                <h2 class="mb-5">Education</h2>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mt-xxl-5">Indiana University, Jacobs School of Music – Bloomington, Indiana</h3>
 
-                            <h3 class="mt-xxl-5">Minors</h3>
-                            <h4 class="subheading mb-3">Informatics</h4>
-                            <h4 class="subheading mb-3">Human Centered Computing</h4>
+                        <h3 class="mt-xxl-5">Bachelor of Science</h3>
+                        <h4 class="subheading mb-3">Audio Engineering and Sound Production</h4>
 
-                            <h3 class="mt-xxl-5">Certificates</h3>
-                            <h4 class="subheading mb-3">Analogue Audio Electronics</h4>
-                        </div>
-                        <div class="flex-shrink-0"><span class="text-primary">August 2019 - Exp. May 2023</span></div>
+                        <h3 class="mt-xxl-5">Minors</h3>
+                        <h4 class="subheading mb-3">Informatics</h4>
+                        <h4 class="subheading mb-3">Human Centered Computing</h4>
+
+                        <h3 class="mt-xxl-5">Certificates</h3>
+                        <h4 class="subheading mb-3">Analogue Audio Electronics</h4>
                     </div>
+                    <div class="flex-shrink-0"><span class="text-primary">August 2019 - Exp. May 2023</span></div>
                 </div>
-            </section>
-            <hr class="m-0" />
+            </div>
+        </section>
+        <hr class="m-0" />
 
 
 
 
 
-            <!-- Skills---------------------------------------------------------------------
+        <!-- Skills---------------------------------------------------------------------
             <section class="resume-section" id="skills">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Skills</h2>
@@ -240,7 +343,7 @@
 
 
 
-            <!-- Interests---------------------------------------------------------------------
+        <!-- Interests---------------------------------------------------------------------
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">Interests</h2>
@@ -255,11 +358,12 @@
 
 
 
-            
-        </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-    </body>
+
+    </div>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+
 </html>
